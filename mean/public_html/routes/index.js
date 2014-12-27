@@ -12,3 +12,9 @@ exports.lista = function (req, res) {
         criacao: '1503–1517'
     });
 };
+
+exports.grava = function (req, res) {
+    var obra = req.body;//para funcionar precisa add depencia: npm install --save body-parser
+    console.log(obra);
+    res.send('Obra: ' + obra.nomeObra + " recebido no servidor");
+}
