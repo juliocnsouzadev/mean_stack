@@ -1,14 +1,14 @@
 //variaveis de inicialização
 var express = require('express');
 var path = require('path');
-var bodyParser = require("body-parser");
+var bodyParser = require('body-parser');
 var routes = require('./routes'); //rotas na pasta routes
 var app = express();
 
 //configurações do app
 app.set('views', path.join(__dirname, 'views')); //caminho para camada views setado para pasta views
 app.set('view engine', 'ejs'); //engine usada para views
-app.use(bodyParser.json);
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));

@@ -3,14 +3,15 @@ function ObrasArteController($http, $scope) {
         $scope.obra = retorno;
     });
 
-    $http.post('/grava', {
+    var obraGravar = {
         nomeObra: 'As Arveres',
         tipo: 'musica',
         artista: 'Nozes',
         periodo: 'Pos Modernismo',
-        criacao: 'Sec XXI'}
-    )
-            .success(function (retorno) {
-                console.log(retorno);
-            });
+        criacao: 'Sec XXI'};
+
+    $http.post('/grava', obraGravar).success(function (retorno) {
+        console.log('post controller');
+        console.log(retorno);
+    });
 }
