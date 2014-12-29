@@ -28,8 +28,22 @@ function ObrasArteController($http, $scope) {
                 });
     };
 
-    $scope.mostraObra = function(obra) {
-    	$scope.obraSelecionada = obra;
+    $scope.mostraObra = function (obra) {
+        $scope.obraSelecionada = obra;
     }
 
+    $scope.removeObra = function () {
+
+        $http.delete('/obra/' + $scope.obraSelecionada._id)
+                .success(function (retorno) {
+                    console.log(retorno);
+                    var index = $scope.obras.indexOf($scope.obraSelecionada);
+                    $scope.obraSelecionada = null;
+                    $scope.obras.splice(index, 1);
+                })
+                .error(function (data, status, headers, config) {
+                    console.log('Status:' + status);
+                    console.log(data);
+                });
+    }
 }

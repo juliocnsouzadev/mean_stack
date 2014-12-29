@@ -13,19 +13,22 @@
             </li>
         </ul>
 
-        <div>
-        <dl ng-if="obraSelecionada">
-            <dd>Nome da Obra</dd>
-            <dt>{{obraSelecionada.nomeObra}}</dt>
-            <dd>Tipo</dd>
-            <dt>{{obraSelecionada.tipo}}</dt>
-            <dd>Artista</dd>
-            <dt>{{obraSelecionada.artista}}</dt>
-            <dd>Período</dd>
-            <dt>{{obraSelecionada.periodo}}</dt>
-            <dd>Criação</dd>
-            <dt>{{obraSelecionada.criacao}}</dt>
+        <div ng-if="obraSelecionada">
+        <dl >
+            <dt>Nome da Obra</dt>
+            <td>{{obraSelecionada.nomeObra}}</td>
+            <dt>Tipo</dt>
+            <td>{{obraSelecionada.tipo}}</td>
+            <dt>Artista</dt>
+            <td>{{obraSelecionada.artista}}</td>
+            <dt>Período</dt>
+            <td>{{obraSelecionada.periodo}}</td>
+            <dt>Criação</dt>
+            <td>{{obraSelecionada.criacao}}</td>
         </dl>
+
+        <a href="#" ng-click="removeObra()">Deletar Obra {{obraSelecionada.nomeObra}}</a>
+
         </div>
         <form ng-submit="adicionaObra()">
             Nome Obra: <input ng-model = "obra.nomeObra">

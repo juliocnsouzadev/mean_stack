@@ -23,3 +23,12 @@ exports.grava = function (req, res) {
         res.send(obra);
     });
 };
+
+exports.deleta = function (req, res) {
+    var id = req.params.id;
+    Obra.findByIdAndRemove(id, function (error, obra) {
+        if (error)
+            console.log(error);
+        res.send(obra);
+    });
+};
