@@ -7,6 +7,11 @@
     </head>
     <body ng-controller="ObrasArteController">
         <h1>MEAN Stack</h1>
+        <ul>
+            <li ng-repeat="obra in obras">
+                {{obra.nomeObra}}
+            </li>
+        </ul>
         <p>{{obra}}</p>
         <script src="/js/angular.js"></script>
         <script src="/js/ObrasArteController.js"></script>
