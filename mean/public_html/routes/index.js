@@ -15,18 +15,11 @@ exports.lista = function (req, res) {
 };
 
 exports.grava = function (req, res) {
-    console.log("-> entrou em grava...");
-    console.log("-> request:");
-    console.log(req);
-    console.log("-> req.body");
-    console.log(req.body);
-    return;
-
     var obra = new Obra(req.body);//para funcionar precisa add depencia: npm install --save body-parser
 
     obra.save(function (error, obra) {
         if (error)
             return console.log(error);
-        res.send('Obra: ' + obra.nomeObra + ' adicionado com sucesso!');
+        res.send(obra);
     });
 };
