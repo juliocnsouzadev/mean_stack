@@ -25,5 +25,5 @@ var obraSchema = new mongoose.Schema(
         }
 );
 
-var obra = mongoose.model('obra', obraSchema);
-module.exports = obra;
+var Obra = mongoose.model('obra', obraSchema);
+module.exports = Obra;

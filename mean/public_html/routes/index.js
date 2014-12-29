@@ -5,12 +5,11 @@ exports.index = function (req, res) {
 
 exports.lista = function (req, res) {
     res.json({
-        nomeObra: 'Monalisa',
-        tipo: 'pintura',
-        artista: 'Leonardo DaVince',
-        periodo: 'Renascentismo',
-        criacao: '1503–1517'
-    });
+        nomeObra: 'As Arveres',
+        tipo: 'musica',
+        artista: 'Nozes',
+        periodo: 'Pos Modernismo',
+        criacao: 'Sec XXI'});
 };
 
 exports.grava = function (req, res) {
