@@ -17,7 +17,7 @@ app.use(express.static(path.join(__dirname, 'public')));//pasta compartilhada vi
 //rotas
 app.get('/', routes.index); //metodo index (criado no index.js) é invocado
 app.get('/lista', routes.lista);
-app.get('/grava', routes.grava);
+app.post('/grava', routes.grava);
 
 //inicializando server
 app.set('port', process.env.PORT || 3000);
