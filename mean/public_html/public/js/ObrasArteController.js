@@ -28,4 +28,8 @@ function ObrasArteController($http, $scope) {
                 });
     };
 
+    $scope.mostraObra = function(obra) {
+    	$scope.obraSelecionada = obra;
+    }
+
 }

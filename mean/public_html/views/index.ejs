@@ -9,10 +9,24 @@
         <h1>MEAN Stack</h1>
         <ul>
             <li ng-repeat="obra in obras">
-                {{obra.nomeObra}}
+                <a href="#" ng-click="mostraObra(obra)"> {{obra.nomeObra}}</a>
             </li>
         </ul>
 
+        <div>
+        <dl ng-if="obraSelecionada">
+            <dd>Nome da Obra</dd>
+            <dt>{{obraSelecionada.nomeObra}}</dt>
+            <dd>Tipo</dd>
+            <dt>{{obraSelecionada.tipo}}</dt>
+            <dd>Artista</dd>
+            <dt>{{obraSelecionada.artista}}</dt>
+            <dd>Período</dd>
+            <dt>{{obraSelecionada.periodo}}</dt>
+            <dd>Criação</dd>
+            <dt>{{obraSelecionada.criacao}}</dt>
+        </dl>
+        </div>
         <form ng-submit="adicionaObra()">
             Nome Obra: <input ng-model = "obra.nomeObra">
             Tipo: <input ng-model = "obra.tipo">
