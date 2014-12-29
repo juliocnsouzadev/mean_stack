@@ -15,8 +15,11 @@ exports.lista = function (req, res) {
 };
 
 exports.grava = function (req, res) {
-    console.log('grava...');
-    var obra = req.body;//para funcionar precisa add depencia: npm install --save body-parser
-    console.log(obra);
-    res.send('Obra: ' + obra.nomeObra + ' recebido no servidor');
+    var obra = new Obra(req.body);//para funcionar precisa add depencia: npm install --save body-parser
+
+    obra.save(function (error, obra) {
+        if (error)
+            return console.log(error);
+        res.send('Obra: ' + obra.nomeObra + ' adicionado com sucesso!');
+    });
 };

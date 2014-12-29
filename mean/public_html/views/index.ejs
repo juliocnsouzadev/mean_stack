@@ -12,7 +12,15 @@
                 {{obra.nomeObra}}
             </li>
         </ul>
-        <p>{{obra}}</p>
+
+        <form ng-submit="adicionaObra()">
+            Nome Obra: <input ng-model = "obra.nomeObra">
+            Tipo: <input ng-model = "obra.tipo">
+            Artista: <input ng-model = "obra.artista">
+            Periodo: <input ng-model = "obra.periodo">
+            Criacao: <input ng-model = "obra.criacao">
+            <input type="submit">
+        </form>
         <script src="/js/angular.js"></script>
         <script src="/js/ObrasArteController.js"></script>
     </body>
