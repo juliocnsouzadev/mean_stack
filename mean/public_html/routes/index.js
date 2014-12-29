@@ -1,15 +1,17 @@
-//funçao responsavel por redenrizar a vies
+//funçao responsavel por redenrizar a views
+
+var Obra = require('../models/Obra');
+
 exports.index = function (req, res) {
     res.render('index');
 };
 
 exports.lista = function (req, res) {
-    res.json({
-        nomeObra: 'As Arveres',
-        tipo: 'musica',
-        artista: 'Nozes',
-        periodo: 'Pos Modernismo',
-        criacao: 'Sec XXI'});
+    Obra.find({}, function (erro, obras) {
+        if (erro)
+            return console.log(erro);
+        res.json({obras: obras});
+    });
 };
 
 exports.grava = function (req, res) {
