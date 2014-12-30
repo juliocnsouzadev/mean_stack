@@ -14,13 +14,25 @@ function ObrasArteController($http, $scope) {
     }
     $scope.obra = new Obra();
 
-    $scope.adicionaObra = function () {
+    var adicionaObra = function () {
         $http.post('/grava', $scope.obra)
                 .success(function (retorno) {
-                    console.log("Deu certo");
-                    console.log(retorno);
-                    $scope.obras.push(retorno);
+                	$scope.obras.push($scope.obra);
                     $scope.obra = new Obra();
+                    alert(retorno);
+                }).
+                error(function (data, status, headers, config) {
+                    console.log('Status:' + status);
+                    console.log(data);
+                });
+    };
+
+    var atualizaObra = function () {
+        $http.put('/obra', $scope.obra)
+                .success(function (retorno) {
+                    
+                    $scope.obra = new Obra();
+                    alert(retorno);
                 }).
                 error(function (data, status, headers, config) {
                     console.log('Status:' + status);
@@ -36,14 +48,30 @@ function ObrasArteController($http, $scope) {
 
         $http.delete('/obra/' + $scope.obraSelecionada._id)
                 .success(function (retorno) {
-                    console.log(retorno);
                     var index = $scope.obras.indexOf($scope.obraSelecionada);
                     $scope.obraSelecionada = null;
                     $scope.obras.splice(index, 1);
+                    alert(retorno);
                 })
                 .error(function (data, status, headers, config) {
                     console.log('Status:' + status);
                     console.log(data);
                 });
     }
+
+    $scope.editarObra = function () {
+        $scope.obra = $scope.obraSelecionada;
+    }
+
+    $scope.salvarObra = function () {
+    	console.log("entrou")
+        if ($scope.obra._id) {
+        	console.log("vai atualizar");
+            atualizaObra();
+        }
+        else {
+        	console.log("vai adicionar");
+            adicionaObra();
+        }
+    };
 }

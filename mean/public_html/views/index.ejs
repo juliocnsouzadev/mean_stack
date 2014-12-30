@@ -28,9 +28,11 @@
         </dl>
 
         <a href="#" ng-click="removeObra()">Deletar Obra {{obraSelecionada.nomeObra}}</a>
+        <br>
+        <a href="#" ng-click="editarObra()">Editar Obra {{obraSelecionada.nomeObra}}</a>
 
         </div>
-        <form ng-submit="adicionaObra()">
+        <form ng-submit="salvarObra()">
             Nome Obra: <input ng-model = "obra.nomeObra">
             Tipo: <input ng-model = "obra.tipo">
             Artista: <input ng-model = "obra.artista">

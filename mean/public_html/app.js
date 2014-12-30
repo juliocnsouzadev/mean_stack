@@ -19,6 +19,7 @@ app.get('/', routes.index); //metodo index (criado no index.js) é invocado
 app.get('/lista', routes.lista);
 app.post('/grava', routes.grava);
 app.delete('/obra/:id', routes.deleta);
+app.put('/obra', routes.atualiza);
 
 //inicializando server
 app.set('port', process.env.PORT || 3000);

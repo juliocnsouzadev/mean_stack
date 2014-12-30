@@ -19,8 +19,9 @@ exports.grava = function (req, res) {
 
     obra.save(function (error, obra) {
         if (error)
-            return console.log(error);
-        res.send(obra);
+           res.send("Ocorreu um erro: " + error);
+       else
+        res.send("Dados da Obra " + obra.nomeObra + " salvos com sucesso!");
     });
 };
 
@@ -28,7 +29,19 @@ exports.deleta = function (req, res) {
     var id = req.params.id;
     Obra.findByIdAndRemove(id, function (error, obra) {
         if (error)
-            console.log(error);
-        res.send(obra);
+           res.send("Ocorreu um erro: " + error);
+       else
+        res.send("Obra " + obra.nomeObra + " removida com sucesso!");
+    });
+};
+
+exports.atualiza = function (req, res) {
+    var id = req.body._id;
+    delete req.body._id;
+    Obra.findByIdAndUpdate(id, function (error, obra) {
+        if (error)
+           res.send("Ocorreu um erro: " + error);
+       else
+        res.send("Dados da Obra " + obra.nomeObra + " salvos com sucesso!");
     });
 };
