@@ -73,5 +73,6 @@ function ObrasArteController($http, $scope) {
         	console.log("vai adicionar");
             adicionaObra();
         }
+        $scope.obraSelecionada = null;
     };
 }

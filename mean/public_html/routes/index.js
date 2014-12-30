@@ -38,7 +38,7 @@ exports.deleta = function (req, res) {
 exports.atualiza = function (req, res) {
     var id = req.body._id;
     delete req.body._id;
-    Obra.findByIdAndUpdate(id, function (error, obra) {
+    Obra.findByIdAndUpdate(id, req.body ,function (error, obra) {
         if (error)
            res.send("Ocorreu um erro: " + error);
        else
