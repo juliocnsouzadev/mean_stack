@@ -1,5 +1,7 @@
 function ObrasArteController($http, $scope) {
 
+	$scope.cabecalhoNovo = "Nova Obra";
+
     //chama a rota que faz a busca no db e atribui o retorno a variavel de escopo
     $http.get('/lista').success(function (retorno) {
         $scope.obras = retorno.obras;
@@ -59,8 +61,14 @@ function ObrasArteController($http, $scope) {
                 });
     }
 
+    var atualizarCabecalho = function () {
+    	if ($scope.obraSelecionada) return "Edição Obra";
+    	else return "Nova Obra";
+   	}
+
     $scope.editarObra = function () {
         $scope.obra = $scope.obraSelecionada;
+        $scope.cabecalhoNovo = atualizarCabecalho();
     }
 
     $scope.salvarObra = function () {
@@ -75,4 +83,8 @@ function ObrasArteController($http, $scope) {
         }
         $scope.obraSelecionada = null;
     };
+
+    
+
+   	
 }
