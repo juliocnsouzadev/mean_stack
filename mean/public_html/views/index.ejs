@@ -1,49 +1,100 @@
 <!DOCTYPE html>
 <html ng-app>
-    <head>
-        <title>MEAN Stack</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body ng-controller="ObrasArteController">
-        <h1>MEAN Stack</h1>
-        <ul>
-            <li ng-repeat="obra in obras">
-                <a href="#" ng-click="mostraObra(obra)"> {{obra.nomeObra}}</a>
-            </li>
-        </ul>
+<head>
+    <title>MEAN Stack</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body ng-controller="ObrasArteController">
 
-        <div ng-if="obraSelecionada">
-        <dl >
-            <dt>Nome da Obra</dt>
-            <td>{{obraSelecionada.nomeObra}}</td>
-            <dt>Tipo</dt>
-            <td>{{obraSelecionada.tipo}}</td>
-            <dt>Artista</dt>
-            <td>{{obraSelecionada.artista}}</td>
-            <dt>Período</dt>
-            <td>{{obraSelecionada.periodo}}</td>
-            <dt>Criação</dt>
-            <td>{{obraSelecionada.criacao}}</td>
-        </dl>
+    <div class="container"> 
+        <div class="page-header">
+          <h2><img src="https://softuni.bg/Files/images/mean.jpg" alt="mean" class="img-thumbnail" height="250" width="250"><small> A JS end to end application using MongoDB, Express, AngularJS and NodeJS.</small></h2>
+          <h1>Obras de Arte<small> - um app guardar relíquias.</small></h1>
+      </div>
 
-        <a href="#" ng-click="removeObra()">Deletar Obra {{obraSelecionada.nomeObra}}</a>
-        <br>
-        <a href="#" ng-click="editarObra()">Editar Obra {{obraSelecionada.nomeObra}}</a>
-        <br>
+
+
+<div class="row">
+<div class="panel panel-default col-lg-6">
+  <div class="panel-heading">Lista de Obras de Arte</div>
+  <div class="panel-body">
+      <ul class="list-group">
+        <li class="list-group-item" ng-repeat="obra in obras">
+            <a href="#" ng-click="mostraObra(obra)"> {{obra.nomeObra}}</a>
+        </li>
+    </ul>
+
+    <div class="panel panel-default" ng-if="obraSelecionada">
+      <div class="panel-heading">Dados da Obra</div>
+      <div class="panel-body">
+        <div >
+            <dl >
+                <dt>Nome da Obra</dt>
+                <td>{{obraSelecionada.nomeObra}}</td>
+                <dt>Tipo</dt>
+                <td>{{obraSelecionada.tipo}}</td>
+                <dt>Artista</dt>
+                <td>{{obraSelecionada.artista}}</td>
+                <dt>Período</dt>
+                <td>{{obraSelecionada.periodo}}</td>
+                <dt>Criação</dt>
+                <td>{{obraSelecionada.criacao}}</td>
+            </dl>
+
+            <a href="#" ng-click="editarObra()" class="btn btn-default pull-right">Editar Obra {{obraSelecionada.nomeObra}}</a>
+
+            <a href="#" ng-click="removeObra()" class="btn btn-danger pull-left">Deletar Obra {{obraSelecionada.nomeObra}}</a>
+
+            <br>
         </div>
-        <form ng-submit="salvarObra()">
-            Nome Obra: <input ng-model = "obra.nomeObra">
-            Tipo: <input ng-model = "obra.tipo">
-            Artista: <input ng-model = "obra.artista">
-            Periodo: <input ng-model = "obra.periodo">
-            Criacao: <input ng-model = "obra.criacao">
-            <input type="submit">
-        </form>
-        <script src="/js/angular.js"></script>
-        <script src="/js/ObrasArteController.js"></script>
+    </div>
+</div>
+</div>
+</div>
 
-        <!-- Latest compiled and minified CSS -->
+<div class="panel panel-default col-lg-6">
+  <div class="panel-heading">Nova/Edição Obra</div>
+  <div class="panel-body">
+
+<form ng-submit="salvarObra()">
+
+    <div class="form-group">
+        <label for="nomeObra">Nome Obra:</label>
+        <input ng-model = "obra.nomeObra" class="form-control" placeholder="nome da obra"  id="nomeObra">
+    </div>
+
+    <div class="form-group">
+        <label for="tipoObra">Tipo:</label>
+        <input ng-model = "obra.tipo" class="form-control" placeholder="tipo (pintura, escultura, etc)"  id="tipoObra">
+    </div>
+
+    <div class="form-group">
+        <label for="artista">Artista:</label>
+        <input ng-model = "obra.artista" class="form-control" placeholder="artista"  id="artista">
+    </div>
+
+    <div class="form-group">
+        <label for="periodo">Período:</label>
+        <input ng-model = "obra.periodo" class="form-control" placeholder="periodo"  id="periodo">
+    </div>
+
+    <div class="form-group">
+        <label for="criacao">Criação:</label>
+        <input ng-model = "obra.criacao" class="form-control" placeholder="criação"  id="criacao">
+    </div>
+
+    <input type="submit" class="btn btn-default" value="Salvar"></input>
+</div>
+</form>
+</div>
+</div>
+
+</div>
+<script src="/js/angular.js"></script>
+<script src="/js/ObrasArteController.js"></script>
+
+<!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 
 <!-- Optional theme -->
@@ -53,5 +104,5 @@
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-    </body>
+</body>
 </html>
