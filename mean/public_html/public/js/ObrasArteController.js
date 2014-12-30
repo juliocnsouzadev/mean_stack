@@ -1,90 +1,93 @@
-function ObrasArteController($http, $scope) {
+angular.module('catalogo')
+        .controller('ObrasArteController', function ($http, $scope) {
 
-	$scope.cabecalhoNovo = "Nova Obra";
+            $scope.cabecalhoNovo = "Nova Obra";
 
-    //chama a rota que faz a busca no db e atribui o retorno a variavel de escopo
-    $http.get('/lista').success(function (retorno) {
-        $scope.obras = retorno.obras;
-    });
+            //chama a rota que faz a busca no db e atribui o retorno a variavel de escopo
+            $http.get('/lista').success(function (retorno) {
+                $scope.obras = retorno.obras;
+            });
 
-    function Obra() {
-        this.nomeObra = '';
-        this.tipo = '';
-        this.artista = '';
-        this.periodo = '';
-        this.criacao = '';
-    }
-    $scope.obra = new Obra();
+            function Obra() {
+                this.nomeObra = '';
+                this.tipo = '';
+                this.artista = '';
+                this.periodo = '';
+                this.criacao = '';
+            }
+            $scope.obra = new Obra();
 
-    var adicionaObra = function () {
-        $http.post('/grava', $scope.obra)
-                .success(function (retorno) {
-                	$scope.obras.push($scope.obra);
-                    $scope.obra = new Obra();
-                    alert(retorno);
-                }).
-                error(function (data, status, headers, config) {
-                    console.log('Status:' + status);
-                    console.log(data);
-                });
-    };
+            var adicionaObra = function () {
+                $http.post('/grava', $scope.obra)
+                        .success(function (retorno) {
+                            $scope.obras.push($scope.obra);
+                            $scope.obra = new Obra();
+                            alert(retorno);
+                        }).
+                        error(function (data, status, headers, config) {
+                            console.log('Status:' + status);
+                            console.log(data);
+                        });
+            };
 
-    var atualizaObra = function () {
-        $http.put('/obra', $scope.obra)
-                .success(function (retorno) {
-                    
-                    $scope.obra = new Obra();
-                    alert(retorno);
-                }).
-                error(function (data, status, headers, config) {
-                    console.log('Status:' + status);
-                    console.log(data);
-                });
-    };
+            var atualizaObra = function () {
+                $http.put('/obra', $scope.obra)
+                        .success(function (retorno) {
 
-    $scope.mostraObra = function (obra) {
-        $scope.obraSelecionada = obra;
-    }
+                            $scope.obra = new Obra();
+                            alert(retorno);
+                        }).
+                        error(function (data, status, headers, config) {
+                            console.log('Status:' + status);
+                            console.log(data);
+                        });
+            };
 
-    $scope.removeObra = function () {
+            $scope.mostraObra = function (obra) {
+                $scope.obraSelecionada = obra;
+            }
 
-        $http.delete('/obra/' + $scope.obraSelecionada._id)
-                .success(function (retorno) {
-                    var index = $scope.obras.indexOf($scope.obraSelecionada);
-                    $scope.obraSelecionada = null;
-                    $scope.obras.splice(index, 1);
-                    alert(retorno);
-                })
-                .error(function (data, status, headers, config) {
-                    console.log('Status:' + status);
-                    console.log(data);
-                });
-    }
+            $scope.removeObra = function () {
 
-    var atualizarCabecalho = function () {
-    	if ($scope.obraSelecionada) return "Edição Obra";
-    	else return "Nova Obra";
-   	}
+                $http.delete('/obra/' + $scope.obraSelecionada._id)
+                        .success(function (retorno) {
+                            var index = $scope.obras.indexOf($scope.obraSelecionada);
+                            $scope.obraSelecionada = null;
+                            $scope.obras.splice(index, 1);
+                            alert(retorno);
+                        })
+                        .error(function (data, status, headers, config) {
+                            console.log('Status:' + status);
+                            console.log(data);
+                        });
+            }
 
-    $scope.editarObra = function () {
-        $scope.obra = $scope.obraSelecionada;
-        $scope.cabecalhoNovo = atualizarCabecalho();
-    }
+            var atualizarCabecalho = function () {
+                if ($scope.obraSelecionada)
+                    return "Edição Obra";
+                else
+                    return "Nova Obra";
+            }
 
-    $scope.salvarObra = function () {
-    	console.log("entrou")
-        if ($scope.obra._id) {
-        	console.log("vai atualizar");
-            atualizaObra();
-        }
-        else {
-        	console.log("vai adicionar");
-            adicionaObra();
-        }
-        $scope.obraSelecionada = null;
-    };
+            $scope.editarObra = function () {
+                $scope.obra = $scope.obraSelecionada;
+                $scope.cabecalhoNovo = atualizarCabecalho();
+            }
 
-    
+            $scope.salvarObra = function () {
+                console.log("entrou")
+                if ($scope.obra._id) {
+                    console.log("vai atualizar");
+                    atualizaObra();
+                }
+                else {
+                    console.log("vai adicionar");
+                    adicionaObra();
+                }
+                $scope.obraSelecionada = null;
+            };
 
-   	
-}
+
+
+
+        });
