@@ -3,25 +3,25 @@ mongoose.connect('mongodb://localhost/mean');
 
 var obraSchema = new mongoose.Schema(
         {
-            nomeObra: {
-                type: String,
-                require: true
-            },
-            tipo: {
-                type: String,
-                require: true
-            },
-            artista: {
-                type: String,
-                require: true
-            },
-            periodo: {
-                type: String,
-                require: true
-            },
-            criacao: {
-                type: String
-            }
+//            nomeObra: {
+//                type: String,
+//                require: false
+//            },
+//            tipo: {
+//                type: String,
+//                require: false
+//            },
+//            artista: {
+//                type: String,
+//                require: true
+//            },
+//            periodo: {
+//                type: String,
+//                require: false
+//            },
+//            criacao: {
+//                type: String
+//            }
         }
 );
 
